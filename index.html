@@ -83,9 +83,8 @@
     <style>
         .title-container {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap; /* 允许内容换行 */
             gap: 10px; /* 调整标题之间的间距 */
-            white-space: nowrap; /* 防止文本换行 */
         }
         .title-container a {
             display: flex;
@@ -95,6 +94,7 @@
             border-radius: 5px; /* 添加圆角 */
             text-decoration: none; /* 去掉下划线 */
             color: inherit; /* 继承父元素颜色 */
+            white-space: nowrap; /* 防止链接内部换行 */
         }
         .title-container a i {
             margin-right: 5px; /* 图标和文本之间的间距 */
@@ -150,7 +150,8 @@
         </div>
     </div>
 </body>
-</html>    
+</html>
+
     <ul class="mylist row">
         <!------>
             <li class="title"><svg class="icon" aria-hidden="true">
