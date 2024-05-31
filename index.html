@@ -102,6 +102,44 @@
             margin-right: 5px; /* 图标和文本之间的间距 */
         }
     </style>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取所有具有"data-toggle"属性的元素
+    var toggleElements = document.querySelectorAll('[data-toggle]');
+    
+    toggleElements.forEach(function(toggleElement) {
+      toggleElement.addEventListener('click', function(event) {
+        event.preventDefault(); // 阻止默认的链接跳转行为
+        
+        // 获取要切换的菜单ID
+        var targetId = this.getAttribute('data-target') || this.getAttribute('href').slice(1);
+        
+        // 找到对应的目标元素
+        var targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // 切换目标元素的显示状态
+          if (window.getComputedStyle(targetElement).display === 'none') {
+            targetElement.style.display = 'block';
+          } else {
+            targetElement.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+</script>
+    <!-- 修改其中一个链接以演示 -->
+<a href="#AI集合" class="smooth" data-target="ai-submenu">
+  <span class="title">AI</span>
+</a>
+
+<!-- 假设的AI子菜单，初始隐藏 -->
+<div id="ai-submenu" style="display:none;">
+  <!-- 这里放置AI相关的子菜单项 -->
+  <a href="#">AI子项1</a>
+  <a href="#">AI子项2</a>
+</div>
 </head>
 <body>
     <div class="page-container">
