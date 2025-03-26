@@ -5,20 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>可拨打电话的二维码</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 </head>
 
 <body>
     <h1>可拨打电话的二维码</h1>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-        <!-- 二维码图案 -->
-        <rect x="0" y="0" width="256" height="256" fill="#ffffff"/>
-        <rect x="16" y="16" width="16" height="16" fill="#000000"/>
-        <rect x="48" y="16" width="16" height="16" fill="#000000"/>
-        <rect x="80" y="16" width="16" height="16" fill="#000000"/>
-        <!-- 更多二维码图案代码... -->
-        <!-- 这里的图案需要根据具体的电话二维码生成算法生成 -->
-        <!-- 二维码数据为 "tel:13255802019"，表示扫码后拨打 1234567890 这个号码 -->
-    </svg>
+    <div id="qrcode"></div>
+    <script>
+        // 要拨打的电话号码
+        const phoneNumber = '13255801029';
+        // 生成二维码数据，使用 tel: 协议
+        const qrData = `tel:${phoneNumber}`;
+        // 创建二维码对象，纠错级别为 L
+        const qr = qrcode(0, 'L');
+        qr.addData(qrData);
+        qr.make();
+        // 将二维码渲染到指定的 DOM 元素中
+        const qrElement = document.getElementById('qrcode');
+        qrElement.innerHTML = qr.createSvgTag({
+            cellColor: '#000000',
+            margin: 0
+        });
+    </script>
 </body>
 
-</html>
+</html>    
